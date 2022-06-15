@@ -1,14 +1,22 @@
+/* eslint-disable prettier/prettier */
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
+import HelloWorld from "../views/HelloWorld.vue";
+import RecipeDetail from "../views/RecipeDetail.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/",
-    name: "Home",
-    component: Home,
+    path: '/',
+    name: 'HelloWorld',
+    component: HelloWorld,
+  },
+  {
+    path: '/recipe/:id',
+    name: 'recipe-detail',
+    component: RecipeDetail,
+    props: true,
   },
   // {
   //   path: "/home-view",
