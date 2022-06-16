@@ -36,10 +36,10 @@
                       hide-overlay
                       transition="dialog-bottom-transition"
                     >
-                      <div v-if="item.recipes">
+                      <!-- <div v-if="item.recipes" class="no-recipes">
                         <h1>No Recipes Available</h1>
-                      </div>
-                      <v-card v-else>
+                      </div> -->
+                      <v-card>
                         <v-toolbar dark color="dark">
                           <v-btn icon dark @click="dialog = false">
                             <v-icon>mdi-close</v-icon>
@@ -61,32 +61,30 @@
                                   height="200px"
                                 >
                                   <v-card-title
+                                    class="text-h4"
                                     v-text="card.name"
                                   ></v-card-title>
                                 </v-img>
 
                                 <v-card-actions>
-                                  <v-btn
-                                    text
-                                    color="dark"
-                                    @click="reveal = true"
-                                  >
-                                    Learn More
-                                  </v-btn>
                                   <v-spacer></v-spacer>
 
-                                  <v-btn icon>
+                                  <v-btn icon class="pr-6 mr-2">
                                     <v-row>
-                                      <v-icon>mdi-thumb-up</v-icon>
-                                      <p>
+                                      <v-icon color="purple darken-2"
+                                        >mdi-thumb-up</v-icon
+                                      >
+                                      <p class="text-h6">
                                         {{ card.user_ratings.count_positive }}
                                       </p>
                                     </v-row>
                                   </v-btn>
-                                  <v-btn icon>
+                                  <v-btn icon class="pl-2 ml-2">
                                     <v-row>
-                                      <v-icon>mdi-thumb-down</v-icon>
-                                      <p>
+                                      <v-icon color="grey darken-2"
+                                        >mdi-thumb-down</v-icon
+                                      >
+                                      <p class="text-h6">
                                         {{ card.user_ratings.count_negative }}
                                       </p>
                                     </v-row>
@@ -94,12 +92,11 @@
                                 </v-card-actions>
                                 <v-expand-transition>
                                   <v-card
-                                    v-if="reveal"
                                     class="transition-fast-in-fast-out v-card--reveal"
                                     style="height: 100%"
                                   >
-                                    <v-card-text class="pb-0">
-                                      <p class="text-h4 text--primary">
+                                    <v-card-text class="pb-6">
+                                      <p class="text-h6 text--primary">
                                         {{
                                           new Date(
                                             card.created_at
@@ -110,15 +107,6 @@
                                         {{ card.description }}
                                       </p>
                                     </v-card-text>
-                                    <v-card-actions class="pt-0">
-                                      <v-btn
-                                        text
-                                        color="dark"
-                                        @click="reveal = false"
-                                      >
-                                        Close
-                                      </v-btn>
-                                    </v-card-actions>
                                   </v-card>
                                 </v-expand-transition>
                               </v-card>
@@ -243,5 +231,11 @@ export default {
   align-items: center;
   justify-content: center;
   height: 100vh;
+}
+.no-recipes {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 </style>
