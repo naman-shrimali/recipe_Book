@@ -9,7 +9,7 @@
             <v-carousel>
               <v-carousel-item
                 v-for="(item, i) in info"
-                :key="i"
+                :key="i.id"
                 :src="item.thumbnail_url"
                 :aspect-ratio="item.aspect_ratio"
                 reverse-transition="fade-transition"
@@ -61,7 +61,6 @@
                                   height="200px"
                                 >
                                   <v-card-title
-                                    class="text-h4"
                                     v-text="card.name"
                                   ></v-card-title>
                                 </v-img>
@@ -92,7 +91,7 @@
                                 </v-card-actions>
                                 <v-expand-transition>
                                   <v-card
-                                    class="transition-fast-in-fast-out v-card--reveal"
+                                    class="transition-fast-in-fast-out"
                                     style="height: 100%"
                                   >
                                     <v-card-text class="pb-6">
@@ -136,7 +135,6 @@ export default {
   name: "HelloWorld",
 
   data: () => ({
-    reveal: false,
     info: [],
     a: "",
     current_recipe: "",
